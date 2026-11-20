@@ -49,7 +49,7 @@ export default function Footer() {
         <div className="border-t border-white/[0.05] pt-8 flex flex-col-reverse md:flex-row justify-between items-center gap-6">
           
           <div className="text-xs text-gray-500 font-sans text-center md:text-right">
-            © 2026 Parham Batouie Studio. All rights reserved.
+            © 2027 Parham Batouie Studio. All rights reserved.
           </div>
 
           <div className="flex gap-6 items-center">
