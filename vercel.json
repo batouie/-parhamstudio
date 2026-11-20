@@ -1,0 +1,17 @@
+{
+  "services": {
+    "frontend": {
+      "root": "frontend/",
+      "framework": "nextjs"
+    },
+    "backend": {
+      "root": "backend/",
+      "entrypoint": "bot:app"
+    }
+  },
+  "rewrites": [
+    { "source": "/webhook", "destination": { "service": "backend" } },
+    { "source": "/set-webhook", "destination": { "service": "backend" } },
+    { "source": "/(.*)", "destination": { "service": "frontend" } }
+  ]
+}
