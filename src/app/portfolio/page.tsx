@@ -1,6 +1,7 @@
 // src/app/portfolio/page.tsx
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 export const revalidate = 0;
 
@@ -20,6 +21,15 @@ export default async function PortfolioPage() {
   return (
     <div className="min-h-screen bg-[#050505] text-white pt-24 px-4 md:px-8 pb-16" dir="rtl">
       <div className="max-w-6xl mx-auto">
+        {/* دکمه بازگشت */}
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 text-gray-400 hover:text-[#D4FF24] transition mb-8 font-vazirmatn text-sm"
+        >
+          <ArrowRight size={18} />
+          بازگشت به خانه
+        </Link>
+
         <h1 className="font-cinzel text-4xl md:text-6xl font-bold mb-4 text-center">PORTFOLIO</h1>
         <p className="text-gray-400 text-center mb-12 font-vazirmatn">نمونه‌کارهای ما</p>
 

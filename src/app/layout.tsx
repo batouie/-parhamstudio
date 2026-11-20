@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { Vazirmatn } from "next/font/google";
 import localFont from "next/font/local";
-import { Toaster } from "sonner"; 
+import { Toaster } from "sonner";
 import "./globals.css";
 import Preloader from "@/components/Preloader";
 
-const vazirmatn = Vazirmatn({ 
-  subsets: ["arabic"], 
+const vazirmatn = Vazirmatn({
+  subsets: ["arabic"],
   display: "swap",
-  variable: "--font-vazirmatn"
+  variable: "--font-vazirmatn",
 });
 
 const cinzel = localFont({
@@ -21,12 +21,6 @@ const cinzel = localFont({
 export const metadata: Metadata = {
   title: "Parham Batouie | Studio",
   description: "Premium Web Solutions",
-  // 👇 بخش اضافه شده برای فاوآیکون
-  icons: {
-    icon: "/icon.svg",
-    shortcut: "/icon.svg",
-    apple: "/icon.svg",
-  },
 };
 
 export default function RootLayout({
@@ -38,7 +32,7 @@ export default function RootLayout({
     <html lang="fa" dir="rtl" className={`${vazirmatn.variable} ${cinzel.variable}`}>
       <body className={`${vazirmatn.className} bg-[#050505] text-white`}>
         {children}
-        <Toaster position="top-center" richColors /> 
+        <Toaster position="top-center" richColors />
         <Preloader />
       </body>
     </html>

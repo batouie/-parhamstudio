@@ -8,6 +8,7 @@ body {
   overflow-x: hidden;
 }
 
+/* اسکرول‌بار سفارشی */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -17,4 +18,13 @@ body {
 ::-webkit-scrollbar-thumb {
   background: #333;
   border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D4FF24; /* رنگ سبز سایت هنگام هاور */
+}
+
+/* اسکرول‌بار برای فایرفاکس */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #333 #000;
 }
