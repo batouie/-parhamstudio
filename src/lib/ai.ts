@@ -2,7 +2,7 @@
 
 const API_KEY = process.env.AI_API_KEY;
 const API_BASE_URL = process.env.AI_API_BASE_URL || "https://api.sambanova.ai/v1";
-const MODEL_NAME = process.env.AI_MODEL_NAME || "Meta-Llama-3.1-8B-Instruct";
+const MODEL_NAME = process.env.AI_MODEL_NAME || "Meta-Llama-3.3-70B-Instruct";
 
 const SYSTEM_PROMPT = `
 تو دستیار هوشمند و پشتیبان آنلاین "پرهام بتوئی" (Parham Batouie) هستی. 
