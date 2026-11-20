@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="pGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4FF24" />
+      <stop offset="100%" stop-color="#a3d900" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <text 
+    x="50" 
+    y="78" 
+    font-family="'Cinzel', 'Times New Roman', serif" 
+    font-size="85" 
+    font-weight="900" 
+    fill="url(#pGradient)" 
+    text-anchor="middle" 
+    filter="url(#glow)"
+  >
+    P
+  </text>
+</svg>
