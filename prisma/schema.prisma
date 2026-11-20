@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL_POOLED")
+  directUrl = env("DATABASE_URL")
+}
+
+model Order {
+  id          String   @id @default(cuid())
+  name        String
+  phone       String
+  projectType String
+  budget      String
+  message     String?
+  createdAt   DateTime @default(now())
+}
+
+model Portfolio {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  imageUrl    String
+  link        String?
+  createdAt   DateTime @default(now())
+}

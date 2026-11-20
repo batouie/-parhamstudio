@@ -1,5 +1,6 @@
-// app/api/contact/route.ts
+// src/app/api/contact/route.ts
 import { NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
 
 const TELEGRAM_TOKEN = process.env.TELEGRAM_BOT_TOKEN!;
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_ADMIN_CHAT_ID!;
@@ -38,6 +39,22 @@ export async function POST(req: Request) {
   try {
     const data = await req.json();
     const { name, phone, projectType, budget, message } = data;
+
+    // 👇 ذخیره سفارش در دیتابیس (قبل از ارسال به پیام‌رسان‌ها)
+    try {
+      await prisma.order.create({
+        data: {
+          name,
+          phone,
+          projectType,
+          budget,
+          message: message || null,
+        },
+      });
+    } catch (dbError) {
+      console.error("Database Save Error:", dbError);
+      // اگر ذخیره در دیتابیس خطا داد، ادامه می‌دهیم تا ارسال به تلگرام متوقف نشود
+    }
 
     const text = `
 🔔 *درخواست جدید از سایت*

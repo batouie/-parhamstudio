@@ -58,6 +58,8 @@ export default function Navbar() {
             <div className="w-[1px] h-4 bg-white/20"></div>
             <div className="flex gap-8 text-sm text-gray-400 font-sans">
               <Link href="#services" className="hover:text-white transition">خدمات</Link>
+              {/* 👇 دکمه نمونه کار اضافه شد */}
+              <Link href="/portfolio" className="hover:text-white transition">نمونه کار</Link>
               <Link href="#pricing" className="hover:text-white transition">پکیج‌ها</Link>
               <Link href="#faq" className="hover:text-white transition">سوالات متداول</Link>
             </div>
@@ -76,6 +78,8 @@ export default function Navbar() {
           >
             <div className="flex flex-col p-4 space-y-4 font-sans text-sm text-gray-300">
               <Link href="#services" onClick={() => setIsOpen(false)} className="hover:text-white transition">خدمات</Link>
+              {/* 👇 دکمه نمونه کار در منوی موبایل اضافه شد */}
+              <Link href="/portfolio" onClick={() => setIsOpen(false)} className="hover:text-white transition">نمونه کار</Link>
               <Link href="#pricing" onClick={() => setIsOpen(false)} className="hover:text-white transition">پکیج‌ها</Link>
               <Link href="#faq" onClick={() => setIsOpen(false)} className="hover:text-white transition">سوالات متداول</Link>
             </div>
