@@ -3,7 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import ContactModal from "./ContactModal";
+import ContactModal from "./ContactModal"; // اگر هنوز جایی استفاده می‌شه، نگهش دار
 
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -76,17 +76,19 @@ export default function Hero() {
             خدمات ما
           </Link>
           
-          {/* دکمه دریافت مشاوره که مودال رو باز می‌کنه */}
-          <button 
-            onClick={() => setIsModalOpen(true)}
+          {/* 🔴 تغییر اصلی اینجاست: لینک مستقیم به تلگرام به جای باز کردن مودال */}
+          <a 
+            href={`https://t.me/studiowebparham_bot`} // 👈 نام کاربری ربات خود را اینجا وارد کنید
+            target="_blank" 
+            rel="noopener noreferrer"
             className="flex-1 md:flex-none text-center px-4 md:px-6 py-3 bg-[#D4FF24] text-black font-bold rounded-full text-xs md:text-sm hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(212,255,36,0.3)]"
           >
             دریافت مشاوره
-          </button>
+          </a>
         </motion.div>
       </div>
 
-      {/* مودال تماس */}
+      {/* مودال تماس (حفظ می‌شود، فقط دیگر دکمه‌ای برای باز کردنش در این صفحه نیست) */}
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
