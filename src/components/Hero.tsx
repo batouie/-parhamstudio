@@ -78,7 +78,7 @@ export default function Hero() {
           
           {/* 🔴 تغییر اصلی اینجاست: لینک مستقیم به تلگرام به جای باز کردن مودال */}
           <a 
-            href={`https://batouie`} // 👈 نام کاربری ربات خود را اینجا وارد کنید
+            href={`https://t.me/batouie`} // 👈 نام کاربری ربات خود را اینجا وارد کنید
             target="_blank" 
             rel="noopener noreferrer"
             className="flex-1 md:flex-none text-center px-4 md:px-6 py-3 bg-[#D4FF24] text-black font-bold rounded-full text-xs md:text-sm hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(212,255,36,0.3)]"
