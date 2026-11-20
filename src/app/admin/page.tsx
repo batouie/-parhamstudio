@@ -15,7 +15,6 @@ interface Portfolio {
   id: string;
   title: string;
   description: string | null;
-  imageUrl: string;
   link: string | null;
   createdAt: string;
 }
@@ -23,7 +22,7 @@ interface Portfolio {
 export default function AdminPage() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [portfolio, setPortfolio] = useState<Portfolio[]>([]);
-  const [form, setForm] = useState({ title: "", description: "", imageUrl: "", link: "" });
+  const [form, setForm] = useState({ title: "", description: "", link: "" });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -56,7 +55,7 @@ export default function AdminPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-      setForm({ title: "", description: "", imageUrl: "", link: "" });
+      setForm({ title: "", description: "", link: "" });
       await fetchData();
     } catch (error) {
       console.error("Error adding portfolio:", error);
@@ -67,7 +66,7 @@ export default function AdminPage() {
     if (!confirm("آیا از حذف این نمونه‌کار مطمئن هستید؟")) return;
     try {
       await fetch(`/api/portfolio?id=${id}`, { method: "DELETE" });
-      setPortfolio(portfolio.filter(p => p.id !== id));
+      setPortfolio(portfolio.filter((p) => p.id !== id));
     } catch (error) {
       console.error("Error deleting portfolio:", error);
     }
@@ -101,7 +100,7 @@ export default function AdminPage() {
                       <p className="text-sm text-gray-400 font-vazirmatn">{o.phone}</p>
                     </div>
                     <span className="text-xs text-gray-500">
-                      {new Date(o.createdAt).toLocaleDateString('fa-IR')}
+                      {new Date(o.createdAt).toLocaleDateString("fa-IR")}
                     </span>
                   </div>
                   <p className="text-sm text-gray-400 mt-2 font-vazirmatn">
@@ -123,28 +122,21 @@ export default function AdminPage() {
             <input
               placeholder="عنوان"
               value={form.title}
-              onChange={e => setForm({...form, title: e.target.value})}
+              onChange={(e) => setForm({ ...form, title: e.target.value })}
               className="bg-white/5 border border-white/10 rounded-lg p-3 font-vazirmatn focus:border-[#D4FF24] outline-none"
               required
-            />
-            <input
-              placeholder="لینک تصویر (URL)"
-              value={form.imageUrl}
-              onChange={e => setForm({...form, imageUrl: e.target.value})}
-              className="bg-white/5 border border-white/10 rounded-lg p-3 font-vazirmatn focus:border-[#D4FF24] outline-none"
-              required
-            />
-            <input
-              placeholder="توضیحات (اختیاری)"
-              value={form.description}
-              onChange={e => setForm({...form, description: e.target.value})}
-              className="bg-white/5 border border-white/10 rounded-lg p-3 font-vazirmatn focus:border-[#D4FF24] outline-none"
             />
             <input
               placeholder="لینک پروژه (اختیاری)"
               value={form.link}
-              onChange={e => setForm({...form, link: e.target.value})}
+              onChange={(e) => setForm({ ...form, link: e.target.value })}
               className="bg-white/5 border border-white/10 rounded-lg p-3 font-vazirmatn focus:border-[#D4FF24] outline-none"
+            />
+            <input
+              placeholder="توضیحات (اختیاری)"
+              value={form.description}
+              onChange={(e) => setForm({ ...form, description: e.target.value })}
+              className="bg-white/5 border border-white/10 rounded-lg p-3 font-vazirmatn focus:border-[#D4FF24] outline-none col-span-full"
             />
             <button
               type="submit"
@@ -159,7 +151,10 @@ export default function AdminPage() {
           ) : (
             <div className="space-y-2">
               {portfolio.map((p) => (
-                <div key={p.id} className="flex justify-between items-center bg-white/5 p-3 rounded-lg border border-white/10">
+                <div
+                  key={p.id}
+                  className="flex justify-between items-center bg-white/5 p-3 rounded-lg border border-white/10"
+                >
                   <span className="font-vazirmatn">{p.title}</span>
                   <button
                     onClick={() => deletePortfolio(p.id)}

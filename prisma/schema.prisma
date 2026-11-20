@@ -22,7 +22,6 @@ model Portfolio {
   id          String   @id @default(cuid())
   title       String
   description String?
-  imageUrl    String
   link        String?
   createdAt   DateTime @default(now())
 }

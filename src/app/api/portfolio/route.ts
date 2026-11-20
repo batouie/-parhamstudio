@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 export async function GET() {
   try {
     const items = await prisma.portfolio.findMany({
-      orderBy: { createdAt: 'desc' },
+      orderBy: { createdAt: "desc" },
     });
     return NextResponse.json({ items });
   } catch (error) {
@@ -15,12 +15,11 @@ export async function GET() {
 
 export async function POST(req: Request) {
   try {
-    const { title, description, imageUrl, link } = await req.json();
+    const { title, description, link } = await req.json();
     const item = await prisma.portfolio.create({
       data: {
         title,
         description: description || null,
-        imageUrl,
         link: link || null,
       },
     });
@@ -34,7 +33,7 @@ export async function POST(req: Request) {
 export async function DELETE(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
-    const id = searchParams.get('id');
+    const id = searchParams.get("id");
     if (!id) {
       return NextResponse.json({ error: "شناسه نمونه‌کار لازم است" }, { status: 400 });
     }

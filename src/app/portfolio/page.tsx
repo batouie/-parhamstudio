@@ -1,12 +1,20 @@
 // src/app/portfolio/page.tsx
 import { prisma } from "@/lib/prisma";
-import Image from "next/image";
 import Link from "next/link";
-import { Portfolio } from "@/generated/prisma";
+
+export const revalidate = 0;
+
+interface PortfolioItem {
+  id: string;
+  title: string;
+  description: string | null;
+  link: string | null;
+  createdAt: Date;
+}
 
 export default async function PortfolioPage() {
   const items = await prisma.portfolio.findMany({
-    orderBy: { createdAt: 'desc' },
+    orderBy: { createdAt: "desc" },
   });
 
   return (
@@ -19,32 +27,27 @@ export default async function PortfolioPage() {
           <p className="text-center text-gray-500 font-vazirmatn">هنوز نمونه‌کاری اضافه نشده است.</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {items.map((item: Portfolio) => (
-              <div key={item.id} className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden group">
-                <div className="relative h-48 overflow-hidden">
-                  <Image 
-                    src={item.imageUrl} 
-                    alt={item.title} 
-                    fill 
-                    className="object-cover group-hover:scale-105 transition-transform duration-500" 
-                  />
-                </div>
-                <div className="p-5">
-                  <h2 className="font-cinzel text-xl font-bold">{item.title}</h2>
-                  {item.description && (
-                    <p className="text-gray-400 text-sm mt-2 font-vazirmatn leading-relaxed">{item.description}</p>
-                  )}
-                  {item.link && (
-                    <Link 
-                      href={item.link} 
-                      className="text-[#D4FF24] text-sm mt-4 inline-block font-vazirmatn hover:underline" 
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      مشاهده پروژه ←
-                    </Link>
-                  )}
-                </div>
+            {items.map((item: PortfolioItem) => (
+              <div
+                key={item.id}
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-[#D4FF24]/50 transition"
+              >
+                <h2 className="font-cinzel text-2xl font-bold mb-2">{item.title}</h2>
+                {item.description && (
+                  <p className="text-gray-400 text-sm font-vazirmatn leading-relaxed mb-4">
+                    {item.description}
+                  </p>
+                )}
+                {item.link && (
+                  <Link
+                    href={item.link}
+                    className="text-[#D4FF24] text-sm inline-block font-vazirmatn hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    مشاهده پروژه ←
+                  </Link>
+                )}
               </div>
             ))}
           </div>
