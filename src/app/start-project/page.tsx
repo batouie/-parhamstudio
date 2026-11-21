@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, CheckCircle2, Loader2, ArrowRight, ArrowLeft, Sparkles } from "lucide-react";
+import { Send, CheckCircle2, Loader2, ArrowRight, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import Link from "next/link";
 
@@ -13,8 +13,9 @@ export default function StartProjectPage() {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    projectType: "سایت شرکتی",
+    projectType: "وب‌سایت اختصاصی",
     budget: "۱۵ تا ۳۵ میلیون",
+    startTime: "در اسرع وقت",
     message: ""
   });
 
@@ -44,13 +45,9 @@ export default function StartProjectPage() {
     }
   };
 
-  // انیمیشن‌های ورود فرم
   const containerVariants = {
     hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 }
-    }
+    show: { opacity: 1, transition: { staggerChildren: 0.1 } }
   };
 
   const itemVariants = {
@@ -66,15 +63,13 @@ export default function StartProjectPage() {
           animate={{ opacity: 1, scale: 1, y: 0 }} 
           className="bg-white/[0.02] border border-white/[0.08] p-8 md:p-12 rounded-3xl text-center max-w-md w-full shadow-2xl relative overflow-hidden"
         >
-          {/* هاله نور پس‌زمینه موفقیت */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-green-500/20 blur-[60px] rounded-full pointer-events-none" />
-
           <div className="w-16 h-16 md:w-20 md:h-20 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
             <CheckCircle2 className="text-green-500 w-8 h-8 md:w-10 md:h-10" />
           </div>
           <h1 className="text-2xl md:text-3xl font-bold text-white mb-3">درخواست شما ثبت شد</h1>
           <p className="text-gray-400 text-xs md:text-sm mb-8 leading-relaxed">
-            ممنون که با ما همراه شدید. تیم ما در اسرع وقت با شما تماس خواهد گرفت.
+            ممنون که با من همراه شدید. به‌زودی شخصاً با شما تماس خواهم گرفت.
           </p>
           <Link href="/" className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#D4FF24] text-black font-bold rounded-full hover:scale-105 transition-all text-sm md:text-base w-full justify-center">
             بازگشت به صفحه اصلی
@@ -87,19 +82,14 @@ export default function StartProjectPage() {
 
   return (
     <div className="min-h-[100dvh] bg-[#050505] text-white flex items-center justify-center p-4 md:p-6 relative overflow-hidden py-16 md:py-6" dir="rtl">
-      {/* هاله‌های نور پس‌زمینه */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#D4FF24]/5 rounded-full blur-[80px] md:blur-[120px] pointer-events-none" />
-      <div className="absolute top-10 right-10 w-[200px] h-[200px] bg-blue-500/5 rounded-full blur-[80px] pointer-events-none" />
-
-      {/* کانتینر اصلی با حاشیه گرادیانی */}
+      
       <div className="w-full max-w-xl p-[1px] rounded-[2rem] bg-gradient-to-b from-white/20 via-white/5 to-transparent shadow-2xl relative z-10">
-        
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           className="w-full bg-[#0a0a0a]/95 backdrop-blur-xl p-6 md:p-10 rounded-[2rem] relative overflow-hidden"
         >
-          {/* دکمه بازگشت */}
           <Link 
             href="/" 
             className="absolute top-6 left-6 md:top-8 md:left-8 text-gray-500 hover:text-white transition-colors flex items-center gap-1.5 text-xs md:text-sm group"
@@ -111,11 +101,12 @@ export default function StartProjectPage() {
           <div className="text-center mb-8 md:mb-10 mt-6 md:mt-0">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D4FF24]/10 text-[#D4FF24] text-[10px] md:text-xs font-medium mb-4 border border-[#D4FF24]/20">
               <Sparkles size={12} />
-              شروع همکاری
+              Let's build something great
             </div>
-            <h1 className="text-2xl md:text-4xl font-bold mb-2 md:mb-3 tracking-tight">شروع یک پروژه جدید</h1>
+            {/* 👇 متن‌های جدید طبق پرامپت */}
+            <h1 className="text-2xl md:text-4xl font-bold mb-2 md:mb-3 tracking-tight">ایده‌تان را به یک تجربه دیجیتال تبدیل کنیم.</h1>
             <p className="text-gray-400 text-xs md:text-sm max-w-sm mx-auto leading-relaxed">
-              فرم زیر را پر کنید تا در کمتر از ۲۴ ساعت با شما تماس بگیریم.
+              برای شروع همکاری، کمی درباره پروژه و نیازهای خود توضیح دهید تا بتوانم راهکار مناسب را بررسی کنم.
             </p>
           </div>
 
@@ -139,14 +130,14 @@ export default function StartProjectPage() {
                 />
               </motion.div>
               <motion.div variants={itemVariants} className="space-y-1.5 md:space-y-2">
-                <label className="text-xs md:text-sm text-gray-300 font-medium">شماره تماس <span className="text-[#D4FF24]">*</span></label>
+                <label className="text-xs md:text-sm text-gray-300 font-medium">شماره تماس یا آیدی تلگرام <span className="text-[#D4FF24]">*</span></label>
                 <input 
                   required
-                  type="tel" 
+                  type="text" 
                   value={formData.phone}
                   onChange={(e) => setFormData({...formData, phone: e.target.value})}
                   className="w-full bg-white/[0.03] border border-white/10 rounded-xl p-3.5 md:p-4 text-base md:text-sm focus:border-[#D4FF24] focus:ring-1 focus:ring-[#D4FF24]/50 focus:bg-white/[0.05] outline-none transition-all text-left placeholder:text-gray-600"
-                  placeholder="0912 345 6789"
+                  placeholder="0912 345 6789 یا @username"
                   dir="ltr"
                 />
               </motion.div>
@@ -160,11 +151,11 @@ export default function StartProjectPage() {
                   onChange={(e) => setFormData({...formData, projectType: e.target.value})}
                   className="w-full bg-[#111] border border-white/10 rounded-xl p-3.5 md:p-4 text-base md:text-sm focus:border-[#D4FF24] focus:ring-1 focus:ring-[#D4FF24]/50 outline-none transition-all appearance-none cursor-pointer"
                 >
-                  <option value="سایت شرکتی">سایت شرکتی</option>
+                  <option value="وب‌سایت اختصاصی">وب‌سایت اختصاصی</option>
                   <option value="فروشگاه اینترنتی">فروشگاه اینترنتی</option>
-                  <option value="لندینگ پیج">لندینگ پیج</option>
-                  <option value="وب اپلیکیشن">وب اپلیکیشن</option>
-                  <option value="سایر">سایر</option>
+                  <option value="اتوماسیون و هوش مصنوعی">اتوماسیون و هوش مصنوعی</option>
+                  <option value="وب‌اپلیکیشن">وب‌اپلیکیشن</option>
+                  <option value="سایر موارد">سایر موارد</option>
                 </select>
               </motion.div>
               <motion.div variants={itemVariants} className="space-y-1.5 md:space-y-2">
@@ -174,12 +165,29 @@ export default function StartProjectPage() {
                   onChange={(e) => setFormData({...formData, budget: e.target.value})}
                   className="w-full bg-[#111] border border-white/10 rounded-xl p-3.5 md:p-4 text-base md:text-sm focus:border-[#D4FF24] focus:ring-1 focus:ring-[#D4FF24]/50 outline-none transition-all appearance-none cursor-pointer"
                 >
+                  <option value="کمتر از ۱۵ میلیون">کمتر از ۱۵ میلیون تومان</option>
                   <option value="۱۵ تا ۳۵ میلیون">۱۵ تا ۳۵ میلیون تومان</option>
                   <option value="۳۵ تا ۸۰ میلیون">۳۵ تا ۸۰ میلیون تومان</option>
                   <option value="بیش از ۸۰ میلیون">بیش از ۸۰ میلیون تومان</option>
+                  <option value="نیازمند مشاوره">نیازمند مشاوره</option>
                 </select>
               </motion.div>
             </div>
+
+            {/* 👇 فیلد جدید: زمان موردنظر برای شروع */}
+            <motion.div variants={itemVariants} className="space-y-1.5 md:space-y-2">
+              <label className="text-xs md:text-sm text-gray-300 font-medium">زمان موردنظر برای شروع</label>
+              <select 
+                value={formData.startTime}
+                onChange={(e) => setFormData({...formData, startTime: e.target.value})}
+                className="w-full bg-[#111] border border-white/10 rounded-xl p-3.5 md:p-4 text-base md:text-sm focus:border-[#D4FF24] focus:ring-1 focus:ring-[#D4FF24]/50 outline-none transition-all appearance-none cursor-pointer"
+              >
+                <option value="در اسرع وقت">در اسرع وقت</option>
+                <option value="۱ تا ۲ هفته آینده">۱ تا ۲ هفته آینده</option>
+                <option value="۱ ماه آینده">۱ ماه آینده</option>
+                <option value="بیش از ۱ ماه">بیش از ۱ ماه</option>
+              </select>
+            </motion.div>
 
             <motion.div variants={itemVariants} className="space-y-1.5 md:space-y-2">
               <label className="text-xs md:text-sm text-gray-300 font-medium">توضیحات پروژه <span className="text-gray-500 font-normal">(اختیاری)</span></label>
@@ -206,7 +214,7 @@ export default function StartProjectPage() {
                 ) : (
                   <>
                     <Send size={20} />
-                    ارسال درخواست
+                    ارسال درخواست پروژه
                   </>
                 )}
               </button>
