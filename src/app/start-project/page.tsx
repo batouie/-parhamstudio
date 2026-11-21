@@ -98,14 +98,16 @@ export default function StartProjectPage() {
             <span className="hidden sm:inline">بازگشت</span>
           </Link>
 
-          <div className="text-center mb-8 md:mb-10 mt-6 md:mt-0">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D4FF24]/10 text-[#D4FF24] text-[10px] md:text-xs font-medium mb-4 border border-[#D4FF24]/20">
+          {/* 👇 بخش بالای فرم (مرتب‌شده) */}
+          <div className="flex flex-col items-center text-center mt-12 md:mt-8 mb-10 md:mb-12">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#D4FF24]/10 text-[#D4FF24] text-[10px] md:text-xs font-medium mb-5 border border-[#D4FF24]/20 tracking-wider uppercase">
               <Sparkles size={12} />
               Let's build something great
             </div>
-            {/* 👇 متن‌های جدید طبق پرامپت */}
-            <h1 className="text-2xl md:text-4xl font-bold mb-2 md:mb-3 tracking-tight">ایده‌تان را به یک تجربه دیجیتال تبدیل کنیم.</h1>
-            <p className="text-gray-400 text-xs md:text-sm max-w-sm mx-auto leading-relaxed">
+            <h1 className="text-2xl md:text-4xl font-bold mb-4 leading-tight max-w-lg">
+              ایده‌تان را به یک تجربه دیجیتال تبدیل کنیم.
+            </h1>
+            <p className="text-gray-400 text-xs md:text-base max-w-md mx-auto leading-relaxed">
               برای شروع همکاری، کمی درباره پروژه و نیازهای خود توضیح دهید تا بتوانم راهکار مناسب را بررسی کنم.
             </p>
           </div>
@@ -174,7 +176,6 @@ export default function StartProjectPage() {
               </motion.div>
             </div>
 
-            {/* 👇 فیلد جدید: زمان موردنظر برای شروع */}
             <motion.div variants={itemVariants} className="space-y-1.5 md:space-y-2">
               <label className="text-xs md:text-sm text-gray-300 font-medium">زمان موردنظر برای شروع</label>
               <select 
