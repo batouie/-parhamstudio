@@ -1,92 +1,92 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus } from "lucide-react";
-import Link from "next/link";
+import { Plus, Minus } from "lucide-react";
 
 const faqs = [
-  { q: "پرداخت به چه صورت است؟", a: "۵۰٪ پیش‌پرداخت، ۵۰٪ پس از تحویل و تایید نهایی." },
-  { q: "هزینه دامنه و هاست با کیست؟", a: "هزینه سالانه دامنه و هاست به عهده کارفرماست (راه‌اندازی با من)." },
-  { q: "چقدر زمان می‌برد؟", a: "بسته به پکیج، از ۱ هفته تا ۱ ماه کاری." },
-  { q: "آیا محتوای سایت را خودتان تولید می‌کنید؟", a: "محتوا توسط شما تامین می‌شود، اما من در بهینه‌سازی و چیدمان مشاوره میدهم." }
+  {
+    q: "پرداخت هزینه پروژه به چه صورت است؟",
+    a: "شرایط پرداخت بر اساس نوع و حجم پروژه مشخص می‌شود. معمولاً پس از توافق بر سر جزئیات، بخشی از مبلغ به‌عنوان پیش‌پرداخت دریافت می‌شود و ادامه پرداخت طبق مراحل توافق‌شده انجام خواهد شد.",
+  },
+  {
+    q: "هزینه دامنه و هاست بر عهده چه کسی است؟",
+    a: "هزینه دامنه، هاست و سرویس‌های شخص ثالث به‌صورت جداگانه محاسبه می‌شود و پیش از شروع پروژه به شما اعلام خواهد شد.",
+  },
+  {
+    q: "طراحی وب‌سایت چقدر زمان می‌برد؟",
+    a: "زمان اجرا به تعداد صفحات، امکانات و پیچیدگی پروژه بستگی دارد. زمان‌بندی دقیق پس از بررسی نیازهای شما مشخص خواهد شد.",
+  },
+  {
+    q: "آیا تولید محتوای وب‌سایت هم انجام می‌شود؟",
+    a: "تولید و ورود محتوا بر اساس توافق و محدوده خدمات هر پروژه انجام می‌شود. در صورت نیاز، می‌توان درباره تولید محتوای متنی و تصویری نیز برنامه‌ریزی کرد.",
+  },
+  {
+    q: "آیا وب‌سایت در موبایل و تبلت هم به‌درستی نمایش داده می‌شود؟",
+    a: "بله. وب‌سایت‌ها با رویکرد واکنش‌گرا طراحی می‌شوند تا در اندازه‌های مختلف صفحه‌نمایش تجربه کاربری مناسبی داشته باشند.",
+  },
+  {
+    q: "آیا امکان توسعه وب‌سایت در آینده وجود دارد؟",
+    a: "بله. ساختار پروژه با توجه به نیازهای آن طراحی می‌شود و امکان افزودن امکانات جدید در آینده، متناسب با معماری و زیرساخت پروژه، بررسی خواهد شد.",
+  },
+  {
+    q: "آیا از هوش مصنوعی در طراحی استفاده می‌کنید؟",
+    a: "بله. از ابزارها و فناوری‌های هوش مصنوعی برای بهینه‌سازی فرایند طراحی و توسعه و همچنین پیاده‌سازی قابلیت‌های هوشمند متناسب با نیاز پروژه استفاده می‌کنم.",
+  },
+  {
+    q: "پس از تحویل پروژه پشتیبانی ارائه می‌شود؟",
+    a: "شرایط و مدت پشتیبانی بر اساس پکیج انتخابی و توافق نهایی پروژه مشخص خواهد شد.",
+  },
 ];
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-32 px-6 max-w-7xl mx-auto relative z-10">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8">
+    <section id="faq" className="py-20 md:py-32 relative bg-[#050505]">
+      <div className="max-w-4xl mx-auto px-4 md:px-6 relative z-10">
         
-        {/* ستون راست (در RTL): عنوان و دکمه */}
-        <div className="lg:col-span-5 flex flex-col items-start lg:sticky lg:top-32 h-fit">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-bold text-white font-sans mb-6 leading-tight"
-          >
-            سوالات<br />
-            <span className="text-[#D4FF24]">متداول</span>
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-gray-400 leading-relaxed text-base mb-8 max-w-sm font-sans"
-          >
-            هر سوالی داری اینجا جواب داده شده. اگر هنوز سوالی داری، می‌تونی مستقیم با من در ارتباط باشی.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            <Link href="https://t.me/batouie" target="_blank" className="px-6 py-3 border border-white/20 rounded-full text-sm text-white hover:bg-[#D4FF24] hover:border-[#D4FF24] hover:text-black transition-all duration-300 inline-block font-sans">
-              پرسیدن سوال
-            </Link>
-          </motion.div>
-        </div>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <span className="text-[#D4FF24] text-xs font-medium tracking-[0.2em] uppercase mb-4 block">FREQUENTLY ASKED QUESTIONS</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">پاسخ به سوالات شما.</h2>
+          <p className="text-gray-400 text-sm md:text-base max-w-md mx-auto leading-relaxed">
+            پیش از شروع همکاری، پاسخ برخی از سوالات متداول را اینجا پیدا کنید.
+          </p>
+        </motion.div>
 
-        {/* ستون چپ (در RTL): آکاردئون */}
-        <div className="lg:col-span-7 flex flex-col border-t border-white/10">
+        <div className="flex flex-col gap-3">
           {faqs.map((faq, i) => (
-            <motion.div
+            <motion.div 
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className={`border-b border-white/10 group transition-colors duration-300 ${openIndex === i ? 'bg-white/[0.02]' : 'hover:bg-white/[0.02]'}`}
+              transition={{ delay: i * 0.05 }}
+              className="border border-white/[0.08] bg-white/[0.02] rounded-2xl overflow-hidden"
             >
-              <button 
+              <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full py-8 flex items-center justify-between text-right gap-4"
+                className="w-full flex items-center justify-between p-5 md:p-6 text-right hover:bg-white/[0.04] transition-colors"
               >
-                <div className="flex items-center gap-6">
-                  <span className="text-sm font-mono text-gray-500 group-hover:text-[#D4FF24] transition-colors duration-300">
-                    0{i + 1}
-                  </span>
-                  <span className={`font-medium text-lg md:text-xl font-sans transition-colors duration-300 ${openIndex === i ? 'text-[#D4FF24]' : 'text-white group-hover:text-[#D4FF24]'}`}>
-                    {faq.q}
-                  </span>
-                </div>
-                <div className={`shrink-0 transition-transform duration-300 ${openIndex === i ? 'rotate-45 text-[#D4FF24]' : 'text-gray-500 group-hover:text-white'}`}>
-                  <Plus size={24} />
-                </div>
+                <span className="text-white font-medium text-sm md:text-base pr-4">{faq.q}</span>
+                <span className="shrink-0 text-[#D4FF24]">
+                  {openIndex === i ? <Minus size={20} /> : <Plus size={20} />}
+                </span>
               </button>
+              
               <AnimatePresence>
                 {openIndex === i && (
-                  <motion.div 
+                  <motion.div
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="overflow-hidden"
                   >
-                    <div className="pb-8 pr-[4.5rem] pl-6 text-gray-400 leading-relaxed text-sm md:text-base font-sans">
+                    <div className="p-5 md:p-6 pt-0 text-gray-400 text-xs md:text-sm leading-relaxed border-t border-white/[0.05] mt-2">
                       {faq.a}
                     </div>
                   </motion.div>
@@ -95,6 +95,7 @@ export default function FAQ() {
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );

@@ -16,19 +16,17 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
         
-        {/* 👈 سمت راست: منو (موبایل) / دکمه شروع پروژه (دسکتاپ) */}
         <div className="flex items-center gap-3 md:gap-4">
           
-          {/* 📱 موبایل: اول همبرگر (راست‌ترین) */}
+          {/* 📱 دکمه همبرگری */}
           <button
-            className="md:hidden text-white p-1"
+            className="md:hidden text-white p-1 transition-colors relative z-50"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
 
-          {/* 📱 موبایل: دکمه شروع پروژه، کنار همبرگر (سمت چپش) */}
           <Link
             href="/start-project"
             className="md:hidden bg-[#D4FF24] text-black text-xs font-bold px-4 py-2 rounded-full whitespace-nowrap"
@@ -36,7 +34,6 @@ export default function Navbar() {
             شروع پروژه
           </Link>
 
-          {/* 💻 دسکتاپ: دکمه شروع پروژه */}
           <Link
             href="/start-project"
             className="hidden md:block text-sm text-white hover:text-[#D4FF24] transition font-sans"
@@ -45,7 +42,6 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* 👈 سمت چپ: لوگو و منوها (دسکتاپ) */}
         <div className="flex items-center gap-6 md:gap-10">
           <Link
             href="/"
@@ -56,32 +52,54 @@ export default function Navbar() {
 
           <div className="hidden md:flex items-center gap-6 md:gap-10">
             <div className="w-[1px] h-4 bg-white/20"></div>
-            <div className="flex gap-8 text-sm text-gray-400 font-sans">
-              <Link href="#services" className="hover:text-white transition">خدمات</Link>
-              {/* 👇 دکمه نمونه کار اضافه شد */}
-              <Link href="/portfolio" className="hover:text-white transition">نمونه کار</Link>
-              <Link href="#pricing" className="hover:text-white transition">پکیج‌ها</Link>
-              <Link href="#faq" className="hover:text-white transition">سوالات متداول</Link>
+            <div className="flex gap-6 text-sm text-gray-400 font-sans">
+              <Link href="/" className="hover:text-[#D4FF24] transition">خانه</Link>
+              <Link href="#services" className="hover:text-[#D4FF24] transition">خدمات</Link>
+              <Link href="/portfolio" className="hover:text-[#D4FF24] transition">نمونه کارها</Link>
+              <Link href="#pricing" className="hover:text-[#D4FF24] transition">پکیج‌ها</Link>
+              <Link href="#about" className="hover:text-[#D4FF24] transition">درباره من</Link>
+              <Link href="#faq" className="hover:text-[#D4FF24] transition">سوالات متداول</Link>
             </div>
           </div>
         </div>
       </div>
 
-      {/* 👈 منوی موبایل (Dropdown) */}
+      {/* 📱 منوی موبایل: باریک‌تر شده */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="md:hidden overflow-hidden bg-[#0a0a0a] border-b border-white/10"
+            initial={{ opacity: 0, y: -10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.95 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            /* 👇 عرض از w-48 به w-[172px] تغییر کرد */
+            className="md:hidden absolute top-[60px] right-4 w-[172px] bg-[#0a0a0a]/90 backdrop-blur-2xl border border-white/[0.08] rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] overflow-hidden origin-top-right"
           >
-            <div className="flex flex-col p-4 space-y-4 font-sans text-sm text-gray-300">
-              <Link href="#services" onClick={() => setIsOpen(false)} className="hover:text-white transition">خدمات</Link>
-              {/* 👇 دکمه نمونه کار در منوی موبایل اضافه شد */}
-              <Link href="/portfolio" onClick={() => setIsOpen(false)} className="hover:text-white transition">نمونه کار</Link>
-              <Link href="#pricing" onClick={() => setIsOpen(false)} className="hover:text-white transition">پکیج‌ها</Link>
-              <Link href="#faq" onClick={() => setIsOpen(false)} className="hover:text-white transition">سوالات متداول</Link>
+            <div className="flex flex-col p-2">
+              <Link href="/" onClick={() => setIsOpen(false)} className="text-xs text-gray-300 hover:text-white hover:bg-white/10 transition-all px-3 py-2.5 rounded-lg flex items-center justify-between group">
+                <span>خانه</span>
+                <span className="text-[#D4FF24] opacity-0 group-hover:opacity-100 transition-opacity text-[10px]">←</span>
+              </Link>
+              <Link href="#services" onClick={() => setIsOpen(false)} className="text-xs text-gray-300 hover:text-white hover:bg-white/10 transition-all px-3 py-2.5 rounded-lg flex items-center justify-between group">
+                <span>خدمات</span>
+                <span className="text-[#D4FF24] opacity-0 group-hover:opacity-100 transition-opacity text-[10px]">←</span>
+              </Link>
+              <Link href="/portfolio" onClick={() => setIsOpen(false)} className="text-xs text-gray-300 hover:text-white hover:bg-white/10 transition-all px-3 py-2.5 rounded-lg flex items-center justify-between group">
+                <span>نمونه کارها</span>
+                <span className="text-[#D4FF24] opacity-0 group-hover:opacity-100 transition-opacity text-[10px]">←</span>
+              </Link>
+              <Link href="#pricing" onClick={() => setIsOpen(false)} className="text-xs text-gray-300 hover:text-white hover:bg-white/10 transition-all px-3 py-2.5 rounded-lg flex items-center justify-between group">
+                <span>پکیج‌ها</span>
+                <span className="text-[#D4FF24] opacity-0 group-hover:opacity-100 transition-opacity text-[10px]">←</span>
+              </Link>
+              <Link href="#about" onClick={() => setIsOpen(false)} className="text-xs text-gray-300 hover:text-white hover:bg-white/10 transition-all px-3 py-2.5 rounded-lg flex items-center justify-between group">
+                <span>درباره من</span>
+                <span className="text-[#D4FF24] opacity-0 group-hover:opacity-100 transition-opacity text-[10px]">←</span>
+              </Link>
+              <Link href="#faq" onClick={() => setIsOpen(false)} className="text-xs text-gray-300 hover:text-white hover:bg-white/10 transition-all px-3 py-2.5 rounded-lg flex items-center justify-between group">
+                <span>سوالات متداول</span>
+                <span className="text-[#D4FF24] opacity-0 group-hover:opacity-100 transition-opacity text-[10px]">←</span>
+              </Link>
             </div>
           </motion.div>
         )}

@@ -1,76 +1,90 @@
 "use client";
 import { motion } from "framer-motion";
-import { Monitor, ShoppingCart, Cpu } from "lucide-react";
+import { Monitor, ShoppingBag, Bot } from "lucide-react";
 
 const services = [
-  { 
-    icon: <Monitor size={28} />, 
-    title: "طراحی وب‌سایت اختصاصی", 
-    desc: "وب‌سایتی که هویت برند شما را فریاد می‌زند؛ سریع، امن و بهینه‌شده برای تبدیل بازدیدکننده به مشتری." 
+  {
+    num: "01",
+    icon: <Monitor size={28} />,
+    title: "طراحی وب‌سایت اختصاصی",
+    desc: "طراحی و توسعه وب‌سایت‌های مدرن و اختصاصی متناسب با هویت برند شما؛ با تمرکز بر تجربه کاربری، سرعت، واکنش‌گرایی و عملکرد حرفه‌ای.",
+    features: ["طراحی رابط کاربری اختصاصی", "توسعه واکنش‌گرا", "ساختار بهینه و قابل توسعه", "توجه به اصول سئو"]
   },
-  { 
-    icon: <ShoppingCart size={28} />, 
-    title: "فروشگاه‌های آنلاین مقیاس‌پذیر", 
-    desc: "زیرساخت فروشگاهی مدرن با تجربه کاربری بی‌نقص. بستری امن برای فروش ۲۴ ساعته و رشد پیوسته کسب‌وکار شما." 
+  {
+    num: "02",
+    icon: <ShoppingBag size={28} />,
+    title: "فروشگاه‌های آنلاین",
+    desc: "طراحی فروشگاه‌های اینترنتی با زیرساخت مدرن، فرایند خرید آسان و امکانات مدیریتی مناسب برای توسعه و رشد کسب‌وکار.",
+    features: ["مدیریت محصولات", "سبد خرید و پرداخت", "مدیریت سفارش‌ها", "طراحی مناسب موبایل"]
   },
-  { 
-    icon: <Cpu size={28} />, 
-    title: "اتوماسیون و دستیاران هوشمند", 
-    desc: "ربات‌هایی که ۲۴ ساعته بدون خستگی سفارش می‌گیرند و به مشتریان پاسخ می‌دهند. مدیریت خودکار، بدون خطای انسانی." 
+  {
+    num: "03",
+    icon: <Bot size={28} />,
+    title: "اتوماسیون و دستیاران هوشمند",
+    desc: "توسعه سیستم‌های هوشمند برای خودکارسازی فرایندها، مدیریت درخواست‌ها، پاسخ‌گویی و بهینه‌سازی عملیات کسب‌وکار.",
+    features: ["دستیاران مبتنی بر هوش مصنوعی", "خودکارسازی فرایندها", "اتصال به سرویس‌های مختلف", "مدیریت هوشمند درخواست‌ها"]
   }
 ];
 
 export default function Services() {
   return (
-    <section id="services" className="py-20 md:py-32 px-4 md:px-6 max-w-7xl mx-auto relative z-10">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="flex flex-col md:flex-row justify-between items-center md:items-end mb-10 md:mb-20 border-b border-white/10 pb-6 md:pb-8"
-      >
-        <h2 className="text-3xl md:text-6xl font-bold text-white font-sans">
-          خدمات 
-        </h2>
-        <span className="text-gray-500 font-mono text-xs md:text-sm mt-3 md:mt-0 uppercase tracking-widest">
-          What we do
-        </span>
-      </motion.div>
-      
-      <div className="flex flex-col border-t border-white/10">
-        {services.map((s, i) => (
-          <motion.div 
-            key={i}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.15, duration: 0.5 }}
-            className="group relative border-b border-white/10 py-6 md:py-14 flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-12 transition-all duration-500 cursor-pointer"
-          >
-            <div className="absolute inset-0 bg-white/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl" />
+    <section id="services" className="py-20 md:py-32 relative z-10 bg-[#050505]">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center md:text-right mb-16 md:mb-24"
+        >
+          <span className="text-[#D4FF24] text-xs font-medium tracking-[0.2em] uppercase mb-4 block">WHAT I DO</span>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            راهکارهای دیجیتال برای کسب‌وکارهای آینده.
+          </h2>
+          <p className="text-gray-400 text-sm md:text-base max-w-2xl leading-relaxed md:ml-auto">
+            از طراحی یک وب‌سایت اختصاصی تا توسعه سیستم‌های هوشمند؛ هر پروژه با توجه به نیاز و هدف کسب‌وکار طراحی و اجرا می‌شود.
+          </p>
+        </motion.div>
 
-            <div className="flex items-start md:items-center gap-4 md:gap-12 relative z-10">
-              <span className="text-xs md:text-sm font-mono text-gray-500 group-hover:text-[#D4FF24] transition-colors duration-300 mt-1 md:mt-0">
-                0{i + 1}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          {services.map((service, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.15, duration: 0.6 }}
+              className="group relative bg-[#0B0B0B] border border-white/[0.08] rounded-3xl p-8 md:p-10 hover:border-[#D4FF24]/40 hover:bg-[#111315] transition-all duration-500 overflow-hidden flex flex-col"
+            >
+              {/* شماره بزرگ در پس‌زمینه */}
+              <span className="absolute top-4 left-6 text-6xl md:text-8xl font-black text-white/[0.03] group-hover:text-[#D4FF24]/5 transition-colors duration-500 pointer-events-none select-none">
+                {service.num}
               </span>
-              
-              <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
-                <div className="p-2.5 md:p-3 rounded-full bg-white/[0.03] text-gray-400 group-hover:text-[#D4FF24] group-hover:bg-[#D4FF24]/10 group-hover:scale-110 transition-all duration-300 shrink-0 w-fit">
-                  {s.icon}
-                </div>
-                <h3 className="text-xl md:text-4xl font-bold text-white group-hover:text-[#D4FF24] transition-colors duration-300 font-sans">
-                  {s.title}
-                </h3>
-              </div>
-            </div>
 
-            <div className="relative z-10 md:max-w-md md:pl-0">
-              <p className="text-gray-400 leading-relaxed text-xs md:text-base group-hover:text-gray-200 transition-colors duration-300 font-sans">
-                {s.desc}
+              {/* آیکون */}
+              <div className="relative z-10 w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/[0.05] flex items-center justify-center text-gray-400 group-hover:text-[#D4FF24] group-hover:border-[#D4FF24]/30 transition-all duration-300 mb-8">
+                {service.icon}
+              </div>
+
+              <h3 className="relative z-10 text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-[#D4FF24] transition-colors duration-300">
+                {service.title}
+              </h3>
+              
+              <p className="relative z-10 text-gray-400 text-sm leading-relaxed mb-8 flex-grow">
+                {service.desc}
               </p>
-            </div>
-          </motion.div>
-        ))}
+
+              <ul className="relative z-10 space-y-3 pt-6 border-t border-white/[0.05]">
+                {service.features.map((feature, j) => (
+                  <li key={j} className="flex items-center gap-3 text-xs md:text-sm text-gray-300">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#D4FF24]" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
